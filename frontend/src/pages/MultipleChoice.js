@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { getVocabularyByLesson } from '../api'; 
+import { getLessonsList, getVocabularyByLesson } from '../api'; 
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { Button, Typography, Box, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import BackToHomeButton from '../components/BackToHomeButton';
