@@ -1,4 +1,3 @@
-// src/components/VocabularyManagementModal.js
 import React, { useState, useEffect } from 'react';
 import { Box, Button, Typography, TextField, Modal, List, ListItem, ListItemText, IconButton, Divider } from '@mui/material';
 import { addVocabulary, getLessonsList, getVocabularyByLesson, deleteVocabulary } from '../api';
@@ -141,7 +140,6 @@ function VocabularyManagementModal({ open, onClose }) {
           </Button>
         </Box>
 
-        {/* Add Vocabulary to Selected/New Lesson */}
         {(showAddLessonForm || selectedLesson) && (
           <Box sx={{ mt: 3 }}>
             <TextField
