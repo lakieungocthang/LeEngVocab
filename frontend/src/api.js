@@ -1,9 +1,9 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const AUTH_SERVICE_URL = 'http://localhost:5001/auth-service/api';
-const USER_PROFILE_SERVICE_URL = 'http://localhost:5002/user-profile-service/api';
-const VOCABULARY_SERVICE_URL = 'http://localhost:5003/vocabulary-service/api';
+const AUTH_SERVICE_URL = process.env.REACT_APP_AUTH_SERVICE_URL;
+const USER_PROFILE_SERVICE_URL = process.env.REACT_APP_USER_PROFILE_SERVICE_URL;
+const VOCABULARY_SERVICE_URL = process.env.REACT_APP_VOCABULARY_SERVICE_URL;
 
 const axiosInstance = axios.create({
     timeout: 5000,

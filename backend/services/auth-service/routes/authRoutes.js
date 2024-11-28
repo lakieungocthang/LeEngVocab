@@ -24,7 +24,7 @@ router.post('/register', async (req, res) => {
     const token = generateToken(user._id);
 
     await axios.post(
-      `http://localhost:5002/user-profile-service/api`,
+      process.env.USER_PROFILE_SERVICE_URL,
       { userId: user._id, name, email },
       {
         headers: {
