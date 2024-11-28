@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vocabulary-service
+  labels:
+    app: vocabulary-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: vocabulary-service
+  template:
+    metadata:
+      labels:
+        app: vocabulary-service
+    spec:
+      containers:
+      - name: vocabulary-service
+        image: lakieungocthang/vocabulary-service:latest
+        ports:
+        - containerPort: 5003
+        env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: vocabulary-service-config
+              key: PORT
+        - name: MONGO_URI
+          valueFrom:
+            configMapKeyRef:
+              name: vocabulary-service-config
+              key: MONGO_URI
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: jwt-secret
+              key: JWT_SECRET

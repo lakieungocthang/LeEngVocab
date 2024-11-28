@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: lakieungocthang/frontend:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: REACT_APP_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: REACT_APP_PORT
+        - name: REACT_APP_AUTH_SERVICE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: REACT_APP_AUTH_SERVICE_URL
+        - name: REACT_APP_USER_PROFILE_SERVICE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: REACT_APP_USER_PROFILE_SERVICE_URL
+        - name: REACT_APP_VOCABULARY_SERVICE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: REACT_APP_VOCABULARY_SERVICE_URL

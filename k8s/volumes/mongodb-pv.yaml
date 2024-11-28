@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongodb-pv-0
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce 
+  nfs:
+    server: 192.168.1.94 
+    path: /mnt/nfs/mongodb-0 
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongodb-pv-1
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce 
+  nfs:
+    server: 192.168.1.94 
+    path: /mnt/nfs/mongodb-1 
