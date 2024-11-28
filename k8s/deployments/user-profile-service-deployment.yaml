@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-profile-service
+  labels:
+    app: user-profile-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: user-profile-service
+  template:
+    metadata:
+      labels:
+        app: user-profile-service
+    spec:
+      containers:
+      - name: user-profile-service
+        image: lakieungocthang/user-profile-service:latest
+        ports:
+        - containerPort: 5002
+        env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: user-profile-service-config
+              key: PORT
+        - name: MONGO_URI
+          valueFrom:
+            configMapKeyRef:
+              name: user-profile-service-config
+              key: MONGO_URI
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: jwt-secret
+              key: JWT_SECRET
